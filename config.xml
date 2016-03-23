@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "tv.loudfeed.govscore-global"
-        versionCode = "13"
-        version     = "1.2.2">
+        id          = "tv.loudfeed.open-voter-data"
+        versionCode = "1"
+        version     = "1.0.0">
 
     <!-- versionCode is optional and Android only -->
     
 
-    <name>Govscore Global</name>
+    <name>Open Voter Data</name>
 
     <description>
         Governance Assessment Tool.
