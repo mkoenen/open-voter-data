@@ -72,7 +72,7 @@
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="SplashScreenDelay" value="4000"/>
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashMaintainAspectRatio" value="true" />
