@@ -11,14 +11,16 @@ function init(){
     document.addEventListener("deviceready", hideKeyboard, false);
 }
 
+
 function initializeMap() {
-    var mymap = L.map('map').setView([51.505, -0.09], 13);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mkoenen.pgbhd1mm',
-        accessToken: 'pk.eyJ1IjoibWtvZW5lbiIsImEiOiJjaW02aWY3cmkwMmhjdHFtNjA4ZWxpdHZjIn0.rALCihDQ0mzv1iYkoXCEwA'
-    }).addTo(mymap);
+    var map = new L.Map('map');
+
+    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib = 'Map data © OpenStreetMap contributors';
+    var osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });
+
+    map.setView(new L.LatLng(43.069452, -89.411373), 11);
+    map.addLayer(osm);
 }
 
 //listen for click events      
