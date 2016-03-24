@@ -12,12 +12,14 @@ function init(){
 }
 
 function initializeMap() {
-    // this is where the custom code will go for each mapping implementation
-    var GOOGLE = new plugin.google.maps.LatLng(37.422858, -122.085065);
-    var map = plugin.google.maps.Map.getMap('map');
-    map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
-      map.setCenter(GOOGLE);
-    });
+    echo "trying to build map";
+    var mymap = L.map('map').setView([51.505, -0.09], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mkoenen.pgbhd1mm',
+        accessToken: 'pk.eyJ1IjoibWtvZW5lbiIsImEiOiJjaW02aWY3cmkwMmhjdHFtNjA4ZWxpdHZjIn0.rALCihDQ0mzv1iYkoXCEwA'
+    }).addTo(mymap);
 }
 
 //listen for click events      
