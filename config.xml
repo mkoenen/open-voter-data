@@ -93,6 +93,7 @@
     
     <access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->
     <access origin="http://mshlmg.wpengine.com" />
+    <allow-navigation href="http://*/*" />
 
 
 </widget>
