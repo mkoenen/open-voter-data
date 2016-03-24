@@ -61,7 +61,7 @@
     <gap:splash src="res/splash/android/portrait-xxhdpi.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
     <gap:splash src="res/splash/android/landscape-xxhdpi.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
 
-    <preference name="phonegap-version" value="cli-5.2.0" />
+    <preference name="phonegap-version" value="cli-6.0.0" />
     <preference name="EnableViewportScale" value="true"/>
     <preference name="BackupWebStorage" value="local"/>
     <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
@@ -78,11 +78,7 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <!-- <preference name="FadeSplashScreen" value="false"/>-->
     <preference name="ShowSplashScreen" value="true" />
-
-    
-    <feature name="http://api.phonegap.com/1.0/network"/>
-    <feature name="http://api.phonegap.com/1.0/notification"/>
-    <feature name="http://api.phonegap.com/1.0/device" />
+    <preference name="permissions" value="none"/>
 
     
    
@@ -93,6 +89,10 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
     <gap:plugin name="cordova-plugin-splashscreen" version="2.1.0" source="npm" />
+    <gap:plugin name="plugin.google.maps" source="plugins.cordova.io" version="~1.2.4">
+        <param name="API_KEY_FOR_ANDROID" value="xyz" />
+        <param name="API_KEY_FOR_IOS" value="123" />
+      </gap:plugin>
     
     <access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->
     <access origin="http://mshlmg.wpengine.com" />

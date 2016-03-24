@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
     <script type="text/javascript" src="lib/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="lib/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     
     <title>Govscore</title>
     
@@ -20,40 +22,14 @@
 
         <div data-role="header">
             <a href="#" data-rel="back" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-arrow-l ui-btn-icon-notext">back</a>
-            <h1 id="how-to">Home</h1>
+            <h1 id="how-to">MAP</h1>
             
         </div><!-- header -->
 
         <div data-role="content">
             
             <article>
-                <img id="header-img" src="img/banner.jpg" alt="header-image" />
-                <p id="about-text">GovScore is a governance maturity assessment tool designed to assist health leaders and managers improve their organizational performance through periodic assessment and continuous enhancement of their governance.</p>
-
-                <h2 id="steps">Steps</h2>
-
-                <ul>
-                <li id="step1">Answer the 25 questions in the GovScore survey and click Submit</li>
-                <li id="step2">View your results on your phone.</li>
-                <li id="step3">Invite other board members to download App and complete GovScore survey.</li>
-                <li id="step4">Examine the combined result of all evaluators of your organization at <a href="http://govscoreglobal.org/your-govscore-results/">govscoreglobal.org</a>. View individual analysis for your institution and recommendations for next improvement steps.</li>
-                <li id="step5">Present GovScore analysis and recommendations to your board colleagues.</li>
-                <li id="step6">Answer the Advanced GovScore questions on your app for improvement areas identified for your organization.</li>
-                <li id="step7">View your results on your phone.</li>
-                <li id="step8">8. Examine the combined Advanced GovScore result of all evaluators of your organization on <a href="http://govscoreglobal.org/your-advanced-govscore-results/">govscoreglobal.org</a> and get further individualized analysis and recommendations for improvement. See how your organizations results compares to the aggregate results of all organizations.
-                </li>
-                </ul>
-
-                <p id="step-last">Good governance leads to effective and efficient management of people, money, medicines and information. Sound management in turn facilitates the work of doctors, nurses, other clinicians and health workers and enables them to provide safe, timely, effective, and efficient care and services that are respectful of and responsive to individual patient and health service user preferences, needs, and values. Good governance essentially assures sound management which in turn enables reliable service delivery and higher organizational performance.</p>
-
-                <h2 id="disclaimer-heading">Disclaimer</h2>
-
-                <p id="disclaimer">Funding for this app was provided by the United States Agency for International Development (USAID) under Cooperative Agreement AIDOAA-A-11-00015. The contents are the responsibility of the Leadership, Management, and Governance Project and do not necessarily reflect the views of USAID or the United States Government.</p>
-                <div id="logos">
-                    <img src="img/usaid.png" alt="USAID logo" />
-                    <img src="img/lmg.gif" alt="LMG logo" />
-                </div>
-                
+                <div id="map"></div>
             </article>
         </div><!-- content -->
 

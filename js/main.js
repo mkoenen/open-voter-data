@@ -1,5 +1,6 @@
 /* Events -----------------------------------------*/
 function init(){
+    document.addEventListener("deviceready", initializeMap, false);
     document.addEventListener("online", onOnline, true);
     document.addEventListener("deviceready", onOnline, true);
     document.addEventListener("deviceready", checkLanguage, false); 
@@ -8,6 +9,15 @@ function init(){
     document.addEventListener("deviceready", initPushwoosh, true);
     document.addEventListener("deviceready", showResultsButtons, false);
     document.addEventListener("deviceready", hideKeyboard, false);
+}
+
+function initializeMap() {
+    // this is where the custom code will go for each mapping implementation
+    var GOOGLE = new plugin.google.maps.LatLng(37.422858, -122.085065);
+    var map = plugin.google.maps.Map.getMap('map');
+    map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
+      map.setCenter(GOOGLE);
+    });
 }
 
 //listen for click events      
