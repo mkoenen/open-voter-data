@@ -82,10 +82,10 @@
 
     
    
-    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" spec="3.0.2" source="pgb" />
+    <gap:plugin name="pushwoosh-pgb-plugin" source="npm" />
     <gap:plugin name="cordova-plugin-network-information" spec="1.0.1" source="pgb" />
     <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:pplugin name="org.apache.cordova.globalization" spec="0.3.4" source="pgb" />
+    <gap:plugin name="org.apache.cordova.globalization" spec="0.3.4" source="pgb" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="org.apache.cordova.device" spec="0.3.0" source="pgb" />
     <gap:plugin name="cordova-plugin-splashscreen" version="1.0.0" source="npm" />
