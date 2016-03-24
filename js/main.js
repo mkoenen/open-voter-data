@@ -13,6 +13,7 @@ function init(){
 
 
 function initializeMap() {
+    notification("reading it", goTo(), "Map Status", "OK");
     var map = new L.Map('map');
 
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
