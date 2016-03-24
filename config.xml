@@ -82,7 +82,7 @@
 
     
    
-    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="4.2.2"/>
+    <!--<gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="4.2.2"/>-->
     <gap:plugin name="org.apache.cordova.network-information" version="01.2.0" />
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.globalization" version="1.0.3" />
