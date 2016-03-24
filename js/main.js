@@ -13,15 +13,17 @@ function init(){
 
 
 function initializeMap() {
-    var mymap = L.map('map').setView([51.505, -0.09], 13);
+   
+    L.mapbox.accessToken = 'pk.eyJ1IjoibWtvZW5lbiIsImEiOiJjaW02aTl4MHYwMmJxdTRtNnF2czM0NTByIn0.KU18qMwQrcVekSMRvV-7uw';
+    // Replace 'mapbox.streets' with your map id.
+    var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/mkoenen.pgbhd1mm/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
+        attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mkoenen.pgbhd1mm',
-        accessToken: 'pk.eyJ1IjoibWtvZW5lbiIsImEiOiJjaW02aTl4MHYwMmJxdTRtNnF2czM0NTByIn0.KU18qMwQrcVekSMRvV-7uw'
-        
-    }).addTo(mymap);
+    var map = L.map('map')
+        .addLayer(mapboxTiles)
+        .setView([42.3610, -71.0587], 15);
+
 }
 
 //listen for click events      
