@@ -35,14 +35,13 @@ function initializeMap() {
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
 
-    map.locate({setView: true, maxZoom: 24});
+    map.locate({setView: true, maxZoom: 18});
 
     var mkIcon = L.Icon.extend({
         options: {
             iconSize:     [40, 40],
-            iconAnchor:   [20, 20],
-            shadowAnchor: [4, 62],
-            popupAnchor:  [-10, -20]
+            iconAnchor:   [0, 0],
+            popupAnchor:  [0, -20]
         }
     });
     var redIcon = new mkIcon({iconUrl: 'img/red-marker.png', iconRetinaUrl: 'img/red-marker@2x.png'}),
