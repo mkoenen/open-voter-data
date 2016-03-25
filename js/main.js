@@ -35,18 +35,27 @@ function initializeMap() {
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
 
-    map.locate({setView: true, maxZoom: 20});
+    map.locate({setView: true, maxZoom: 24});
 
-    var myIcon = L.icon({
-        iconUrl: '/img/blue-marker.png.png',
-        iconRetinaUrl: '/img/blue-marker@2x.png',
-        iconSize: [40, 40],
-        iconAnchor: [20, 20],
-        popupAnchor: [-3, -76]
+    var mkIcon = L.Icon.extend({
+        options: {
+            iconSize:     [40, 40],
+            iconAnchor:   [20, 20],
+            shadowAnchor: [4, 62],
+            popupAnchor:  [-10, -20]
+        }
     });
+    var redIcon = new mkIcon({iconUrl: 'img/red-marker.png', iconRetinaUrl: '/img/red-marker@2x.png'}),
+        blueIcon = new mkIcon({iconUrl: 'img/blue-marker.png', iconRetinaUrl: '/img/blue-marker@2x.png'}),
+        yellowIcon = new mkIcon({iconUrl: 'img/yellow-marker.png', iconRetinaUrl: '/img/yellow-marker@2x.png'})
+        
 
-    L.marker([40.684474, -73.910977], {icon: myIcon}).addTo(map)
+    L.marker([40.684474, -73.910977], {icon: redIcon}).addTo(map)
         .bindPopup("Margarete Koenen, 35 Cooper Street, Brooklyn, NY");
+    L.marker([40.684388, -73.911062], {icon: blueIcon}).addTo(map)
+        .bindPopup("Green House, 31 Cooper Street, Brooklyn, NY");
+    L.marker([40.684214, -73.911235], {icon: yellowIcon}).addTo(map)
+        .bindPopup("hippsters, 23 Cooper Street, Brooklyn, NY");
 
 }
 
