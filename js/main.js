@@ -17,7 +17,7 @@ function initializeMap() {
     var map = L.map('map');
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-        maxZoom: 18,
+        
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
             '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -35,12 +35,19 @@ function initializeMap() {
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
 
-    map.locate({setView: true, maxZoom: 17});
+    map.locate({setView: true, maxZoom: 20});
 
+    var myIcon = L.icon({
+        iconUrl: '/img/blue-marker.png.png',
+        iconRetinaUrl: '/img/blue-marker@2x.png',
+        iconSize: [40, 40],
+        iconAnchor: [20, 20],
+        popupAnchor: [-3, -76]
+    });
 
-
-    L.marker([40.684474, -73.910977]).addTo(map)
+    L.marker([40.684474, -73.910977], {icon: myIcon}).addTo(map)
         .bindPopup("Margarete Koenen, 35 Cooper Street, Brooklyn, NY");
+
 }
 
 //listen for click events      
