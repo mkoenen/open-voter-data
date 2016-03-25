@@ -14,16 +14,33 @@ function init(){
 
 function initializeMap() {
    
-    L.mapbox.accessToken = 'pk.eyJ1IjoibWtvZW5lbiIsImEiOiJjaW02aTl4MHYwMmJxdTRtNnF2czM0NTByIn0.KU18qMwQrcVekSMRvV-7uw';
-    // Replace 'mapbox.streets' with your map id.
-    var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/mkoenen.pgbhd1mm/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-        attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+    var map = L.map('map');
 
-    var map = L.map('map')
-        .addLayer(mapboxTiles)
-        .setView([42.3610, -71.0587], 15);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        id: 'mapbox.streets'
+    }).addTo(map);
 
+    function onLocationFound(e) {
+                var radius = e.accuracy / 5;
+                L.circle(e.latlng, radius).addTo(map);  
+            }
+    function onLocationError(e) {
+                alert(e.message);
+            }
+
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
+
+    map.locate({setView: true, maxZoom: 17});
+
+
+
+    L.marker([40.684474, -73.910977]).addTo(map)
+        .bindPopup("Margarete Koenen, 35 Cooper Street, Brooklyn, NY");
 }
 
 //listen for click events      
