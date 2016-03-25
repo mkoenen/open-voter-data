@@ -45,9 +45,9 @@ function initializeMap() {
             popupAnchor:  [-10, -20]
         }
     });
-    var redIcon = new mkIcon({iconUrl: 'img/red-marker.png', iconRetinaUrl: '/img/red-marker@2x.png'}),
-        blueIcon = new mkIcon({iconUrl: 'img/blue-marker.png', iconRetinaUrl: '/img/blue-marker@2x.png'}),
-        yellowIcon = new mkIcon({iconUrl: 'img/yellow-marker.png', iconRetinaUrl: '/img/yellow-marker@2x.png'})
+    var redIcon = new mkIcon({iconUrl: 'img/red-marker.png', iconRetinaUrl: 'img/red-marker@2x.png'}),
+        blueIcon = new mkIcon({iconUrl: 'img/blue-marker.png', iconRetinaUrl: 'img/blue-marker@2x.png'}),
+        yellowIcon = new mkIcon({iconUrl: 'img/yellow-marker.png', iconRetinaUrl: 'img/yellow-marker@2x.png'})
         
 
     L.marker([40.684474, -73.910977], {icon: redIcon}).addTo(map)
