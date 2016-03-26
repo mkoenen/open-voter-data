@@ -69,11 +69,11 @@ function initializeMap() {
                     status: "clueless"
                 }
             ];
+    function placePeople(person) {
 
-    for (i = 0; i < people.length; i++) {
         var whichIcon;
 
-        switch(people[i].status) {
+        switch(person.status) {
           case "supporter":
             whichIcon = blueIcon;
             break;
@@ -85,10 +85,14 @@ function initializeMap() {
             break;
           default:
             whichIcon = grayIcon;
-        } 
+        }
 
-        L.marker([people[i].lat,people[i].lon], {icon:whichIcon}).addTo(map)
-          .bindPopup(people[i].name + ", " + people[i].address);
+        L.marker([person.lat,person.lon], {icon:whichIcon}).addTo(map)
+          .bindPopup(person.name + ", " + person.address);
+    }
+    
+    for (i = 0; i < people.length; i++) {
+        placePeople(people[i]);
     }
 }
 
