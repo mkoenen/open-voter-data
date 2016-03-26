@@ -70,26 +70,26 @@ function initializeMap() {
                 }
             ];
 
-for (i = 0; i < people.length; i++) {
-    var whichIcon;
+    for (i = 0; i < people.length; i++) {
+        var whichIcon;
 
-    switch(people[i].status) {
-      case "supporter":
-        whichIcon = blueIcon;
-        break;
-      case "opposed":
-        whichIcon = redIcon;
-        break;
-      case "clueless":
-        whichIcon = yellowIcon;
-        break;
-      default:
-        whichIcon = grayIcon;
-    } 
+        switch(people[i].status) {
+          case "supporter":
+            whichIcon = blueIcon;
+            break;
+          case "opposed":
+            whichIcon = redIcon;
+            break;
+          case "clueless":
+            whichIcon = yellowIcon;
+            break;
+          default:
+            whichIcon = grayIcon;
+        } 
 
-    L.marker([people[i].lat,people[i].lon], {icon:whichIcon}).addTo(map)
-      .bindPopup(people[i].name + ", " + people[i].address);
-
+        L.marker([people[i].lat,people[i].lon], {icon:whichIcon}).addTo(map)
+          .bindPopup(people[i].name + ", " + people[i].address);
+    }
 }
 
 //listen for click events      
