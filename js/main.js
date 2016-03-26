@@ -26,7 +26,7 @@ function initializeMap() {
     }).addTo(map);
 
     function onLocationFound(e) {
-                var radius = e.accuracy / 5;
+                var radius = e.accuracy / 6;
                 L.circle(e.latlng, radius).addTo(map);  
             }
     function onLocationError(e) {
@@ -47,15 +47,48 @@ function initializeMap() {
     });
     var redIcon = new mkIcon({iconUrl: 'img/red-marker.png', iconRetinaUrl: 'img/red-marker@2x.png'}),
         blueIcon = new mkIcon({iconUrl: 'img/blue-marker.png', iconRetinaUrl: 'img/blue-marker@2x.png'}),
-        yellowIcon = new mkIcon({iconUrl: 'img/yellow-marker.png', iconRetinaUrl: 'img/yellow-marker@2x.png'})
+        yellowIcon = new mkIcon({iconUrl: 'img/yellow-marker.png', iconRetinaUrl: 'img/yellow-marker@2x.png'});
         
 
-    L.marker([40.684474, -73.910977], {icon: redIcon}).addTo(map)
-        .bindPopup("Margarete Koenen, 35 Cooper Street, Brooklyn, NY");
-    L.marker([40.684388, -73.911062], {icon: blueIcon}).addTo(map)
-        .bindPopup("Green House, 31 Cooper Street, Brooklyn, NY");
-    L.marker([40.684214, -73.911235], {icon: yellowIcon}).addTo(map)
-        .bindPopup("hippsters, 23 Cooper Street, Brooklyn, NY");
+    var people = [ { name: "Margarete", 
+                    address: "35 Cooper St, Brooklyn, NY",
+                    lat : '40.684474',
+                    lon: '-73.910977',
+                    status: "supporter"
+                },
+                {   name: "green House",
+                    address: "31 Cooper St, Brooklyn, NY",
+                    lat : '40.684388',
+                    lon: '-73.911062',
+                    status: "opposed"
+                },
+                {   name: "Hipsters",
+                    address: "23 Cooper St, Brooklyn, NY",
+                    lat : '40.684214',
+                    lon: '-73.911235',
+                    status: "clueless"
+                }
+            ];
+
+for (i = 0; i < people.length; i++) {
+    var whichIcon;
+
+    switch(people[i].status) {
+      case "supporter":
+        whichIcon = blueIcon;
+        break;
+      case "opposed":
+        whichIcon = redIcon;
+        break;
+      case "clueless":
+        whichIcon = yellowIcon;
+        break;
+      default:
+        whichIcon = grayIcon;
+    } 
+
+    L.marker([people[i].lat,people[i].lon], {icon:whichIcon}).addTo(map)
+      .bindPopup(people[i].name + ", " + people[i].address);
 
 }
 
