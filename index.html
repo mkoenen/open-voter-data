@@ -43,11 +43,6 @@
                 <ul>
                     <li><a href="#map" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-home ui-btn-icon-notext ui-btn-active ui-state-persist">Map</a></li>
                     <li><a href="#add-person" id="add-person">Add Person</a></li>
-                    <li><a href="#add-address" id="add-address">Add Address</a></li>
-
-                    <li><a href="#map" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-home ui-btn-icon-notext">Map</a></li>
-                    <li><a href="#add-person" class="ui-btn-active ui-state-persist" id="add-person">Add Person</a></li>
-                    <li><a href="#add-address" id="add-address">Add Address</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
@@ -72,8 +67,29 @@
                     <label for="username" class="ui-hidden-accessible">Name</label>
                         <input type="text" id="username" name="username" placeholder="First name followed by surname" required />
 
-                    <label for="address" class="ui-hidden-accessible">Address</label>
-                        <input type="text" id="address" name="address" placeholder="Streetnumber and Street, Town, State, Zip" required />
+                    <fieldset data-role="controlgroup">
+                        <legend><span id="status">Address</span></legend>
+                        <!-- address-line1 input-->
+                        <label class="control-label">Address Line 1</label>
+                        <input id="address-line1" name="address-line1" type="text" placeholder="address line 1">
+                                
+                        <!-- address-line2 input-->
+                        <label class="control-label">Address Line 2, i.e. apartment or unit </label>
+                        <input id="address-line2" name="address-line2" type="text" placeholder="address line 2">
+                            
+                        <!-- city input-->
+                        <label class="control-label">City / Town</label>
+                        <input id="city" name="city" type="text" placeholder="city" class="input-xlarge">
+            
+                        <!-- region input-->
+                        <label class="control-label">State / Province / Region</label>
+                        <input id="region" name="region" type="text" placeholder="state / province / region">
+
+                        <!-- postal-code input-->
+                        <label class="control-label">Zip / Postal Code</label>
+                        <input id="postal-code" name="postal-code" type="text" placeholder="zip or postal code">
+
+                     </fieldset>
 
                     <label for="email" class="ui-hidden-accessible">Email</label>
                         <input type="email" id="email" name="email" placeholder="Email" />
@@ -82,7 +98,7 @@
                         <input type="phone" id="phone" name="phone" placeholder="Phone Number" />
                     
                     
-                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
+                    <fieldset data-role="controlgroup">
                         <legend><span id="status">Status</span></legend>
                             
                             <input type="radio" name="supporter" id="supporter" value="supporter">
@@ -117,7 +133,6 @@
                 <ul>
                     <li><a href="#map" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-home ui-btn-icon-notext">Map</a></li>
                     <li><a href="#add-person" class="ui-btn-active ui-state-persist" id="add-person">Add Person</a></li>
-                    <li><a href="#add-address" id="add-address">Add Address</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
@@ -127,64 +142,7 @@
 
     
 
-<!-- Add New Address -->
-    <div data-role="page" id="add-address" data-title="Add New Address" data-theme="d">
 
-        <div data-role="header">
-            <a href="#" data-rel="back" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-arrow-l ui-btn-icon-notext">back</a>
-            <h1>Add New Address</h1>
-        </div><!-- header -->
-
-        <div data-role="content">
-            <article>
-                
-                <form name="address-form" id="address-form">
-                    <fieldset>
-                        <!-- Address form -->
-                 
-                        <h2>Address</h2>
-                        <!-- address-line1 input-->
-                        <label class="control-label">Address Line 1</label>
-                        <input id="address-line1" name="address-line1" type="text" placeholder="address line 1">
-                                
-                        <!-- address-line2 input-->
-                        <label class="control-label">Address Line 2</label>
-                        <input id="address-line2" name="address-line2" type="text" placeholder="address line 2">
-                        <p class="help-block">Apartment, suite , unit, building, floor, etc.</p>
-                            
-                        <!-- city input-->
-                        <label class="control-label">City / Town</label>
-                        <input id="city" name="city" type="text" placeholder="city" class="input-xlarge">
-            
-                        <!-- region input-->
-                        <label class="control-label">State / Province / Region</label>
-                        <input id="region" name="region" type="text" placeholder="state / province / region">
-
-                        <!-- postal-code input-->
-                        <label class="control-label">Zip / Postal Code</label>
-                        <input id="postal-code" name="postal-code" type="text" placeholder="zip or postal code">
-                        
-                        
-                    </fieldset>
-                </form>
-                <br />
-                <p id="check-answers3">Please check your answers. You can only submit this form once.</p>
-                <button class="ui-btn ui-shadow" id="new-address">Submit</button>
-                
-            </article>       
-        </div><!-- content -->
-
-        <div data-role="footer" data-position="fixed">
-             <div data-role="navbar">
-                <ul>
-                    <li><a href="#map" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-home ui-btn-icon-notext">Map</a></li>
-                    <li><a href="#add-person"  id="add-person">Add Person</a></li>
-                    <li><a href="#add-address" class="ui-btn-active ui-state-persist" id="add-address">Add Address</a></li>
-                </ul>
-            </div><!-- /navbar -->
-        </div><!-- footer -->
-
-    </div><!-- page -->
 
 
 
