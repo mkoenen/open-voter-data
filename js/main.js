@@ -69,7 +69,7 @@ function initializeMap() {
                     status: "clueless"
                 }
             ];
-    function placePeople(person) {
+    function createMarker(person) {
 
         var whichIcon;
 
@@ -90,9 +90,9 @@ function initializeMap() {
         L.marker([person.lat,person.lon], {icon:whichIcon}).addTo(map)
           .bindPopup(person.name + ", " + person.address);
     }
-    
+
     for (i = 0; i < people.length; i++) {
-        placePeople(people[i]);
+        createMarker(people[i]);
     }
 }
 
