@@ -56,39 +56,48 @@ function initializeMap() {
                     lon: '-73.910977',
                     status: "supporter"
                 },
+                { name: "Michael", 
+                    address: "35 Cooper St, Brooklyn, NY",
+                    lat : '40.684474',
+                    lon: '-73.910977',
+                    status: ""
+                },
                 {   name: "green House",
                     address: "31 Cooper St, Brooklyn, NY",
                     lat : '40.684388',
                     lon: '-73.911062',
-                    status: "opposed"
+                    status: "notasupporter"
                 },
                 {   name: "Hipsters",
                     address: "23 Cooper St, Brooklyn, NY",
                     lat : '40.684214',
                     lon: '-73.911235',
-                    status: "clueless"
+                    status: "undecided"
                 }
             ];
     function createMarker(person) {
 
-        var whichIcon;
+        var whichIcon, toAddressLink, editLink;
 
         switch(person.status) {
           case "supporter":
             whichIcon = blueIcon;
             break;
-          case "opposed":
+          case "notasupporter":
             whichIcon = redIcon;
             break;
-          case "clueless":
+          case "undecided":
             whichIcon = yellowIcon;
             break;
           default:
             whichIcon = grayIcon;
         }
 
+        toAddressLink = '<a href="#add-to-address" class="ui-btn-active ui-state-persist" id="add-to-address-link">Add a New Voter to this Address</a>';
+        editLink = '<a href="#edit-voter" class="ui-btn-active ui-state-persist" id="edit-link">Add a New Voter to this Address</a>';
+
         L.marker([person.lat,person.lon], {icon:whichIcon}).addTo(map)
-          .bindPopup(person.name + ", " + person.address);
+          .bindPopup(person.name + ", " + person.address + editLink + toAddressLink);
     }
 
     for (i = 0; i < people.length; i++) {
@@ -98,12 +107,8 @@ function initializeMap() {
 
 //listen for click events      
 function setbuttons() {
-    document.getElementById('btnStore').addEventListener('click', validate, false);
-    document.getElementById('ag1Store').addEventListener('click', function(){ adv_validate(ag1data, 24, 0, ag1savelocal); });
-    document.getElementById('ag2Store').addEventListener('click', function(){ adv_validate(ag2data, 24, 24, ag2savelocal); });
-    document.getElementById('ag3Store').addEventListener('click', function(){ adv_validate(ag3data, 12, 48, ag3savelocal); });
-    document.getElementById('ag4Store').addEventListener('click', function(){ adv_validate(ag4data, 24, 60, ag4savelocal); });
-    document.getElementById('ag5Store').addEventListener('click', function(){ adv_validate(ag5data, 16, 84, ag5savelocal); });
+    document.getElementById('addperson').addEventListener('click', validate, false);
+    
 }
 
 /* Local Storage ----------------------------------*/
@@ -115,470 +120,84 @@ Storage.prototype.getObject = function(key) {
     var value = this.getItem(key);
     return value && JSON.parse(value);
 }
-
-/* hide Keyboard -----------------------------------*/
-function hideKeyboard(){
-    $('#1none').click(function(){
-             $('#email2').blur();
-        });
-    $('#1minimally').click(function(){
-             $('#email2').blur();
-        });
-    $('#1partly').click(function(){
-             $('#email2').blur();
-        });
-    $('#1mostly').click(function(){
-             $('#email2').blur();
-        });
-    $('#1completely').click(function(){
-             $('#email2').blur();
-        });
-}
         
 
-/* Language ----------------------------------------*/
-function checkLanguage() {
-  navigator.globalization.getPreferredLanguage(
-    function (language) {
-        var mylang = language.value;
-        mylang = mylang.slice(0, 2);
-        translatenow(mylang);
-        localStorage.setObject('mylang', mylang);
-    },
-    function () {alert('Error getting language\n');}
-  );
-}
-var mylang = localStorage.getItem('mylang');  
 
-function translatenow(mylang) { 
-
-    //alert('language: ' + mylang + ' again\n');
-
-    if(mylang == "fr" ) {
-      $.getScript("js/i18n/translation_fr.js", function(){
-        $.i18n.load(i18n_dict_fr);
-        map_all();
-      });
-    }else if(mylang == "es") {
-      $.getScript("js/i18n/translation_es.js", function(){
-        $.i18n.load(i18n_dict_es);
-        map_all();
-      });
-    }else if(mylang == "pt" ) {
-      $.getScript("js/i18n/translation_pt.js", function(){
-        $.i18n.load(i18n_dict_pt);
-        map_all();
-      });
-    }else{
-        //just load the normal page
-      // $.getScript("js/i18n/translation_en.js", function(){
-      //   $.i18n.load(i18n_dict);
-      //   map_all();
-        
-      // });
-    }
-
-function map_all(){
-    /* Home Page */
-    $('h2#about')._t('about');
-    $('p#about-text')._t('about-text');
-    $('#steps')._t('steps');
-    $('li#step1')._t('step1');
-    $('li#step2')._t('step2');
-    $('li#step3')._t('step3');
-    $('li#step4')._t('step4');
-    $('li#step5')._t('step5');
-    $('li#step6')._t('step6');
-    $('li#step7')._t('step7');
-    $('li#step8')._t('step8');
-    $('p#step-last')._t('step-last');
-    $('#disclaimer')._t('disclaimer')
-    /* Govscore */
-    $('#name-input')._t('name-input');
-    $('#email')._t('email');
-    $('#email2')._t('email2');
-    $('#select-org')._t('select-org');
-    $('#gs1')._t('gs1');
-    $('#gs2')._t('gs2');
-    $('#gs3')._t('gs3');
-    $('#gs4')._t('gs4');
-    $('#gs5')._t('gs5');
-    $('#gs6')._t('gs6');
-    $('#gs7')._t('gs7');
-    $('#gs8')._t('gs8');
-    $('#gs9')._t('gs9');
-    $('#gs10')._t('gs10');
-    $('#gs11')._t('gs11');
-    $('#gs12')._t('gs12');
-    $('#gs13')._t('gs13');
-    $('#gs14')._t('gs14');
-    $('#gs15')._t('gs15');
-    $('#gs16')._t('gs16');
-    $('#gs17')._t('gs17');
-    $('#gs18')._t('gs18');
-    $('#gs19')._t('gs19');
-    $('#gs20')._t('gs20');
-    $('#gs21')._t('gs21');
-    $('#gs22')._t('gs22');
-    $('#gs23')._t('gs23');
-    $('#gs24')._t('gs24');
-    $('#gs25')._t('gs25');
-    /* Advanced Govscore */
-    $('#pick-area')._t('pick-area');
-    $('#pick-area-adv')._t('pick-area-adv');
-    $('#ag1')._t('ag1');
-    $('#ag2')._t('ag2');
-    $('#ag3')._t('ag3');
-    $('#ag4')._t('ag4');
-    $('#ag5')._t('ag5');
-    $('#ag6')._t('ag6');
-    $('#ag7')._t('ag7');
-    $('#ag8')._t('ag8');
-    $('#ag9')._t('ag9');
-    $('#ag10')._t('ag10');
-    $('#ag11')._t('ag11');
-    $('#ag12')._t('ag12');
-    $('#ag13')._t('ag13');
-    $('#ag14')._t('ag14');
-    $('#ag15')._t('ag15');
-    $('#ag16')._t('ag16');
-    $('#ag17')._t('ag17');
-    $('#ag18')._t('ag18');
-    $('#ag19')._t('ag19');
-    $('#ag20')._t('ag20');
-    $('#ag21')._t('ag21');
-    $('#ag22')._t('ag22');
-    $('#ag23')._t('ag23');
-    $('#ag24')._t('ag24');
-    $('#ag25')._t('ag25');
-    $('#ag26')._t('ag26');
-    $('#ag27')._t('ag27');
-    $('#ag28')._t('ag28');
-    $('#ag29')._t('ag29');
-    $('#ag30')._t('ag30');
-    $('#ag31')._t('ag31');
-    $('#ag32')._t('ag32');
-    $('#ag33')._t('ag33');
-    $('#ag34')._t('ag34');
-    $('#ag35')._t('ag35');
-    $('#ag36')._t('ag36');
-    $('#ag37')._t('ag37');
-    $('#ag38')._t('ag38');
-    $('#ag39')._t('ag39');
-    $('#ag40')._t('ag40');
-    $('#ag41')._t('ag41');
-    $('#ag42')._t('ag42');
-    $('#ag43')._t('ag43');
-    $('#ag44')._t('ag44');
-    $('#ag45')._t('ag45');
-    $('#ag46')._t('ag46');
-    $('#ag47')._t('ag47');
-    $('#ag48')._t('ag48');
-    $('#ag49')._t('ag49');
-    $('#ag50')._t('ag50');
-    $('#ag51')._t('ag51');
-    $('#ag52')._t('ag52');
-    $('#ag53')._t('ag53');
-    $('#ag54')._t('ag54');
-    $('#ag55')._t('ag55');
-    $('#ag56')._t('ag56');
-    $('#ag57')._t('ag57');
-    $('#ag58')._t('ag58');
-    $('#ag59')._t('ag59');
-    $('#ag60')._t('ag60');
-    $('#ag61')._t('ag61');
-    $('#ag62')._t('ag62');
-    $('#ag63')._t('ag63');
-    $('#ag64')._t('ag64');
-    $('#ag65')._t('ag65');
-    $('#ag66')._t('ag66');
-    $('#ag67')._t('ag67');
-    $('#ag68')._t('ag68');
-    $('#ag69')._t('ag69');
-    $('#ag70')._t('ag70');
-    $('#ag71')._t('ag71');
-    $('#ag72')._t('ag72');
-    $('#ag73')._t('ag73');
-    $('#ag74')._t('ag74');
-    $('#ag75')._t('ag75');
-    $('#ag76')._t('ag76');
-    $('#ag77')._t('ag77');
-    $('#ag78')._t('ag78');
-    $('#ag79')._t('ag79');
-    $('#ag80')._t('ag80');
-    $('#ag81')._t('ag81');
-    $('#ag82')._t('ag82');
-    $('#ag83')._t('ag83');
-    $('#ag84')._t('ag84');
-    $('#ag85')._t('ag85');
-    $('#ag86')._t('ag86');
-    $('#ag87')._t('ag87');
-    $('#ag88')._t('ag88');
-    $('#ag89')._t('ag89');
-    $('#ag90')._t('ag90');
-    $('#ag91')._t('ag91');
-    $('#ag92')._t('ag92');
-    $('#ag93')._t('ag93');
-    $('#ag94')._t('ag94');
-    $('#ag95')._t('ag95');
-    $('#ag96')._t('ag96');
-    $('#ag97')._t('ag97');
-    $('#ag98')._t('ag98');
-    $('#ag99')._t('ag99');
-    $('#ag100')._t('ag100');
-    /* Question Headers */
-    $('#header-ca-1')._t('header-ca-1');
-    $('#header-ca-2')._t('header-ca-2');
-    $('#header-ca-3')._t('header-ca-3');
-    $('#header-ca-4')._t('header-ca-4');
-    $('#header-ca-5')._t('header-ca-5');
-    $('#header-ca-6')._t('header-ca-6');
-    $('#header-es-1')._t('header-es-1');
-    $('#header-es-2')._t('header-es-2');
-    $('#header-es-3')._t('header-es-3');
-    $('#header-es-4')._t('header-es-4');
-    $('#header-es-5')._t('header-es-5');
-    $('#header-es-6')._t('header-es-6');
-    $('#header-ssd-1')._t('header-ssd-1');
-    $('#header-ssd-2')._t('header-ssd-2');
-    $('#header-ssd-3')._t('header-ssd-3');
-    $('#header-sr-1')._t('header-sr-1');
-    $('#header-sr-2')._t('header-sr-2');
-    $('#header-sr-3')._t('header-sr-3');
-    $('#header-sr-4')._t('header-sr-4');
-    $('#header-sr-5')._t('header-sr-5');
-    $('#header-sr-6')._t('header-sr-6');
-    $('#header-cce-1')._t('header-cce-1');
-    $('#header-cce-2')._t('header-cce-2');
-    $('#header-cce-3')._t('header-cce-3');
-    $('#header-cce-4')._t('header-cce-4');
-    /* Legend */
-    $('#legend-header')._t('legend-header'); 
-    $('#not-at-all')._t('not-at-all');
-    $('#minimally')._t('minimally');
-    $('#partly')._t('partly');
-    $('#mostly')._t('mostly');
-    $('#completely')._t('completely');
-    /* Headers */
-    $('#how-to')._t('how-to');
-    $('#gs-header')._t('gs-header');
-    $('#adv-header1')._t('adv-header');
-    $('#accountability')._t('accountability');
-    $('#stakeholders')._t('stakeholders');
-    $('#direction')._t('direction');
-    $('#resources')._t('resources');
-    $('#enhancement')._t('enhancement');
-    $('#gs-res-header')._t('gs-res-header');
-    /* Bottom Nav */
-    $('#gs')._t('gs');
-    $('#adv1')._t('adv');
-    $('#res1')._t('res');
-    $('#adv2')._t('adv');
-    $('#adv3')._t('adv');
-    $('#adv4')._t('adv');
-    $('#adv5')._t('adv');
-    $('#adv6')._t('adv');
-    $('#adv7')._t('adv');
-    $('#adv8')._t('adv');
-    $('#adv9')._t('adv');
-    $('#res2')._t('res');
-    $('#res3')._t('res');
-    $('#res4')._t('res');
-    $('#res5')._t('res');
-    $('#res6')._t('res');
-    $('#res7')._t('res');
-    $('#res8')._t('res');
-    $('#res9')._t('res');
-    /* Buttons */
-    $('#govscore-results2')._t('govscore-results');
-    $('#btnStore')._t('submit');
-    $('#ag1Store')._t('submit');
-    $('#ag2Store')._t('submit');
-    $('#ag3Store')._t('submit');
-    $('#ag4Store')._t('submit');
-    $('#ag5Store')._t('submit');
-    /*Messages*/
-    $('#check-answers1')._t('check-answers');
-    $('#check-answers2')._t('check-answers');
-    $('#check-answers3')._t('check-answers');
-    $('#check-answers4')._t('check-answers');
-    $('#check-answers5')._t('check-answers');
-    $('#check-answers6')._t('check-answers');
-    $('#acc-btn')._t('accountability');
-    $('#stake-btn')._t('stakeholders');
-    $('#dir-btn')._t('direction');
-    $('#res-btn')._t('resources');
-    $('#enh-btn')._t('enhancement');
-    $('#ag1-results')._t('govscore-results');
-    $('#ag2-results')._t('govscore-results');
-    $('#ag3-results')._t('govscore-results');
-    $('#ag4-results')._t('govscore-results');
-    $('#ag5-results')._t('govscore-results');
-    $('#no-results')._t('no-results');
-  }
-}
 
 /* Form Validation -------------------------------------*/
 
 function validate(event) {
-  if(gsdata){
-        if(mylang == "fr" ) {
-                notification('Vous avez déjà rempli cette évaluation. Veuillez consulter vos résultats.', goTo(), "Déjà complété", "OK");
-            }else if(mylang == "es" ) {
-                notification('Usted terminó esta evaluación previamente. Por favor verifique sus resultados.', goTo(), "Ya está completada", "OK");
-            }else if(mylang == "pt" ) {
-                notification('Você concluiu esta avaliação anteriormente. Favor verificar seus resultados.', goTo(), "Já concluído", "OK");
-            }else{
-                notification('You previously finished this assessment. Please check your results.', goTo(), "Already Completed", "OK");
-            }
-        
-  }else{  
-      if( document.gsForm.username.value === "" ) {
-            if(mylang == "fr" ) {
-                notification(  "Veuillez saisir votre nom complet." );
-            }else if(mylang == "es" ) {
-                notification(  "Por favor ingrese su nombre y apellido." );
-            }else if(mylang == "pt" ) {
-                notification(  "Favor digitar seu nome completo." );
-            }else{
-                notification(  "Please enter your full name." );
-            }
-             
-             document.gsForm.username.focus();
-             event.preventDefault();
-             return false;      
-      }
-      if( document.gsForm.email.value !== document.gsForm.email2.value ) {
-            if(mylang == "fr" ) {
-                notification(  "Le courriel que vous avez saisi ne correspond pas. Veuillez réessayer." );
-            }else if(mylang == "es" ) {
-                notification(  "Los datos enviados por email no son compatibles. Por favor intente nuevamente. " );
-            }else if(mylang == "pt" ) {
-                notification(  "Os emails informados não coincidem. Favor tentar novamente." );
-            }else{
-                notification(  "Email entries don't match. Please try again." );
-            }
-            
-            document.gsForm.email.focus();
-            event.preventDefault();
-            return false;    
-      }
-      if( document.gsForm.email.value === "" ) {
-            if(mylang == "fr" ) {
-                notification(  "Veuillez saisir votre adresse e-mail!" );
-            }else if(mylang == "es" ) {
-                notification(  " Por favor ingrese su dirección de email!" );
-            }else if(mylang == "pt" ) {
-                notification(  "Favor informar seu endereço de email!" );
-            }else{
-                notification(  "Please enter your email address!" );
-            }
-            document.gsForm.email.focus();
-            event.preventDefault();
-            return false;
-      }else{
-            // Put extra check for data format
-            var ret = validateEmail();
-            if( ret === false ) {
-                event.preventDefault();
-                return false;
-             }
-      }
-      //check that all answers have been answered
-      var i, key, value;
-      //loop through the entries, grab value and store in array
-      for(i=1; i<=25; i++) {
-          key = "'g" + i +"'";
-          value = $('input[name = ' + key + ']:checked').val();
-          if(value === "" || value == undefined) {
-                if(mylang == "fr" ) {
-                    notification(  "Veuillez répondre à toutes les questions." );
-                }else if(mylang == "es" ) {
-                    notification(  " Por favor responda todas las preguntas." );
-                }else if(mylang == "pt" ) {
-                    notification(  "Favor responder a todas as perguntas." );
-                }else{
-                     notification(  "Please answer all questions.");
-                }
-             
-              event.preventDefault();
-              return false;
-          }
-      }       
-      savelocal();
-      }
+    if( document.voterForm.firstname.value === "" ) {
+
+        notification(  "Please enter a first name." );
+        document.voterForm.firstname.focus();
+        event.preventDefault();
+        return false;      
+    }
+    if( document.voterForm.lastname.value === "" ) {
+
+        notification(  "Please enter a last name." );
+        document.voterForm.lastname.focus();
+        event.preventDefault();
+        return false;      
+    }
+    if( document.gsForm.addressline1.value === "" ) {
+
+        notification(  "Please enter an address!" );
+        document.gsForm.ddressline1.focus();
+        event.preventDefault();
+        return false;
+    }
+    if( document.voterForm.city.value === "" ) {
+
+        notification(  "Please enter a city or town!" );
+        document.voterForm.city.focus();
+        event.preventDefault();
+        return false;
+    }
+    if( document.voterForm.state.value === "" ) {
+
+        notification(  "Please select a state!" );
+        document.voterForm.state.focus();
+        event.preventDefault();
+        return false;
+    }
+    if( document.voterForm.state.value === "" ) {
+
+        notification(  "Please select a state!" );
+        document.voterForm.state.focus();
+        event.preventDefault();
+        return false;
+    }
+    if( document.voterForm.gender.value !== "female" &&
+        document.voterForm.gender.value !== "male" &&
+        document.voterForm.gender.value !== "other") 
+    {
+
+        notification(  "Please indicate the voter's gender!" );
+        document.voterForm.state.focus();
+        event.preventDefault();
+        return false;
+    }
+    if( document.voterForm.voterstatus.value !== "supporter" &&
+        document.voterForm.voterstatus.value !== "leaning" &&
+        document.voterForm.voterstatus.value !== "undecided" &&
+        document.voterForm.voterstatus.value !== "notasupporter" &&
+        document.voterForm.voterstatus.value !== "not-home" &&
+        document.voterForm.voterstatus.value !== "deceased-moved" &&
+        document.voterForm.voterstatus.value !== "not-party-member" &&) 
+    {
+
+        notification(  "Please indicate the voter's status!" );
+        document.voterForm.voterstatus.focus();
+        event.preventDefault();
+        return false;
+    }
+           
+    savelocal();
 }
 
-function validateEmail() {
-   var emailID = document.gsForm.email.value;
-   var atpos = emailID.indexOf("@");
-   var dotpos = emailID.lastIndexOf(".");
-   if (atpos < 1 || ( dotpos - atpos < 2 )) {
 
-        if(mylang == "fr" ) {
-            notification(  "Veuillez saisir votre adresse e-mail exacte." );
-        }else if(mylang == "es" ) {
-            notification(  " Por favor ingrese su dirección de email correcta." );
-        }else if(mylang == "pt" ) {
-            notification(  "Favor informar seu endereço de email correto." );
-        }else{
-            notification( "Please enter a correct email address.");
-        }
-       
-       document.gsForm.email.focus();
-       event.preventDefault();
-       return false;
-   }
-   return( true );
-}
-
-function adv_validate( savedData, length, keyaug, savefunc){
-    if(savedData){
-        if(mylang == "fr" ) {
-            notification(  "Vous avez déjà rempli cette évaluation. Veuillez consulter vos résultats.", goTo()," Déjà complété", "OK" );
-        }else if(mylang == "es" ) {
-            notification(  " Usted terminó esta evaluación previamente. Por favor verifique sus resultados.", goTo(), "Ya está completada", "OK" );
-        }else if(mylang == "pt" ) {
-            notification(  "Você concluiu esta avaliação anteriormente. Favor verificar seus resultados.", goTo(), "Já concluído", "OK" );
-        }else{
-            notification("You previously finished this assessment. Please check your results.", goTo(), "Already Completed", "OK");
-        }
-        
-    }else if(gsdata == null){
-        if(mylang == "fr" ) {
-            notification(  " Veuillez procéder à l’évaluation GovScore initiale avant d’accéder aux questionnaires d’évaluation approfondie.", goTo(),"Alert", "OK" );
-        }else if(mylang == "es" ) {
-            notification(  "Por favor complete la evaluación inicial de govscore antes de responder los cuestionarios de Advanced Govscore.", goToGs(), "Alert", "OK" );
-        }else if(mylang == "pt" ) {
-            notification(  "Favor concluir a avaliação Govscore inicial, antes de passar para os questionários do Govscore Avançado.", goToGs(), "Alert", "OK" );
-        }else{
-            notification('Please complete the initial Govscore assessment before moving on to the Advanced Govscore questionnaires.', goToGs(), "Alert", "OK");
-        }
-        
-    }else{
-      var i, key, value;
-      //loop through the entries, grab value and store in array
-      for(i=1; i<=length; i++) {
-          key = "'ag" + (i+keyaug) +"'";
-          value = $('input[name = ' + key + ']:checked').val();
-          if(value === "" || value == undefined) {
-                if(mylang == "fr" ) {
-                    notification(  "Veuillez répondre à toutes les questions." );
-                }else if(mylang == "es" ) {
-                    notification(  "Por favor responda todas las preguntas." );
-                }else if(mylang == "pt" ) {
-                    notification(  "Favor responder a todas as perguntas." );
-                }else{
-                    notification( "Please answer all questions" );
-                }
-              
-              event.preventDefault();
-              return false;
-          }
-      }
-      savefunc();
-      } 
-}
 
 
 /* Notifications ----------------------------------*/
