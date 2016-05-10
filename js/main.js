@@ -2,8 +2,7 @@
 function init(){
     document.addEventListener("deviceready", initializeMap, false);
     document.addEventListener("online", onOnline, true);
-    document.addEventListener("deviceready", onOnline, true);
-    document.addEventListener("deviceready", checkLanguage, false); 
+    document.addEventListener("deviceready", onOnline, true); 
     document.addEventListener("deviceready", showResults, false);
     document.addEventListener("deviceready", setbuttons, false);
     document.addEventListener("deviceready", initPushwoosh, true);
@@ -48,6 +47,8 @@ function initializeMap() {
     var redIcon = new mkIcon({iconUrl: 'img/red-marker.png', iconRetinaUrl: 'img/red-marker@2x.png'}),
         blueIcon = new mkIcon({iconUrl: 'img/blue-marker.png', iconRetinaUrl: 'img/blue-marker@2x.png'}),
         yellowIcon = new mkIcon({iconUrl: 'img/yellow-marker.png', iconRetinaUrl: 'img/yellow-marker@2x.png'});
+        /*this needs a gray icon*/
+        grayIcon = new mkIcon({iconUrl: 'img/yellow-marker.png', iconRetinaUrl: 'img/yellow-marker@2x.png'});
         
 
     var people = [ { name: "Margarete", 
