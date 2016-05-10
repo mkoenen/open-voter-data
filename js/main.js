@@ -185,7 +185,7 @@ function validate(event) {
         document.voterForm.voterstatus.value !== "notasupporter" &&
         document.voterForm.voterstatus.value !== "not-home" &&
         document.voterForm.voterstatus.value !== "deceased-moved" &&
-        document.voterForm.voterstatus.value !== "not-party-member" &&) 
+        document.voterForm.voterstatus.value !== "not-party-member") 
     {
 
         notification(  "Please indicate the voter's status!" );

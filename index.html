@@ -16,7 +16,7 @@
     <link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
     
     
-    <title>Govscore</title>
+    <title>Open Voter Data</title>
     
 </head>
 <body onload="init();" >
@@ -42,7 +42,7 @@
             <div data-role="navbar">
                 <ul>
                     <li><a href="#map" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-home ui-btn-icon-notext ui-btn-active ui-state-persist">Map</a></li>
-                    <li><a href="#add-person" id="add-person">Add Person</a></li>
+                    <li><a href="#add-voter" id="add-voter">Add Voter</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
@@ -51,47 +51,47 @@
 
 
 
-<!-- Add New Person page -->
-    <div data-role="page" id="add-person" data-title="Add New Person" data-theme="c">
+<!-- Add New Voter page -->
+    <div data-role="page" id="add-voter" data-title="Add New Voter" data-theme="c">
 
         <div data-role="header">
             <a href="#" data-rel="back" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-arrow-l ui-btn-icon-notext">back</a> 
-            <h1>Add New Person</h1>
+            <h1>Add New Voter</h1>
         </div><!-- header -->
 
         <div data-role="content">
             <article>
-                <a href="#govscore-results" id="govscore-results2" class="ui-btn">Assessment Completed<br />See Your Results</a>
                 
-                <form name="personForm" id="personForm">
+                
+                <form name="voterForm" id="voterForm">
                     <fieldset data-role="controlgroup">
                         <legend><span id="name">Name</span></legend>
 
                         <label for="firstname">First Name</label>
-                        <input type="text" id="firstname" name="firstname" placeholder="First Name" required />
+                        <input type="text" id="firstname" name="firstname" placeholder="First Name" required >
 
-                        <label for="lastname">First Name</label>
-                        <input type="text" id="lastname" name="lastname" placeholder="Last Name" required />
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Last Name" required >
                     </fieldset> 
                     
 
                     <fieldset data-role="controlgroup">
                         <legend><span id="address">Address</span></legend>
                         <!-- address-line1 input-->
-                        <label class="control-label">Street Address</label>
-                        <input id="addressline1" name="addressline1" type="text" placeholder="Street Address">
+                        <label for="addressline1">Street Address</label>
+                        <input id="addressline1" name="addressline1" type="text" required >
                                 
                         <!-- address-line2 input-->
-                        <label class="control-label">Apartment or Unit </label>
-                        <input id="addressline2" name="addressline2" type="text" placeholder="Apartment or Unit">
+                        <label for="addressline2">Apartment or Unit </label>
+                        <input id="addressline2" name="addressline2" type="text">
                             
                         <!-- city input-->
-                        <label class="control-label">City / Town</label>
-                        <input id="city" name="city" type="text" placeholder="City" >
+                        <label for="city">City / Town</label>
+                        <input id="city" name="city" type="text" required >
             
                         <!-- region input-->
                         <label for="state" class="select">State</label>
-                        <select id="state" name="state">
+                        <select id="state" name="state" required >
                             <option value="">Select</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -147,59 +147,60 @@
                         </select>
 
                         <!-- postal-code input-->
-                        <label for="zip" class="control-label">Zip Code</label>
-                        <input id="zip" name="zip" type="text" placeholder="Zip Code">
+                        <label for="zip">Zip Code</label>
+                        <input id="zip" name="zip" type="text" required >
 
                      </fieldset>
 
-                    <label for="email" class="ui-hidden-accessible">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email" />
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" >
 
-                    <label for="phone" class="ui-hidden-accessible">Phone</label>
-                    <input type="phone" id="phone" name="phone" placeholder="Phone Number" />
+                    <label for="phone">Phone</label>
+                    <input type="phone" id="phone" name="phone" >
 
                     <fieldset data-role="controlgroup" data-type="horizontal">
                         <legend>Gender</legend>
 
-                        <input type="radio" name="female" id="female" value="female" checked="checked" />
+                        <input type="radio" name="gender" id="female" value="female" />
                         <label for="female">Female</label>
 
-                        <input type="radio" name="male" id="male" value="male"  />
+                        <input type="radio" name="gender" id="male" value="male"  />
                         <label for="male">Male</label>
 
-                        <input type="radio" name="other" id="other" value="other"  />
+                        <input type="radio" name="gender" id="other" value="other"  />
                         <label for="other">Other</label>
                     </fieldset>
 
-                    <label for="age" class="ui-hidden-accessible">Age</label>
-                    <input type="age" id="age" name="age" placeholder="Age" />
+                    <label for="age">Age</label>
+                    <input type="age" id="age" name="age" />
                     
                     
                     <fieldset data-role="controlgroup">
-                        <legend><span id="status">Status</span></legend>
+                        <legend><span id="voterstatus">Status</span></legend>
                             
-                        <input type="radio" name="supporter" id="supporter" value="supporter">
+                        <input type="radio" name="voterstatus" id="supporter" value="supporter">
                         <label for="supporter">Strong Supporter</label>
-                        <input type="radio" name="leaning" id="leaning" value="leaning">
+                        <input type="radio" name="voterstatus" id="leaning" value="leaning">
                         <label for="leaning">Leaning</label>
-                        <input type="radio" name="undecided" id="undecided" value="undecided">
+                        <input type="radio" name="voterstatus" id="undecided" value="undecided">
                         <label for="undecided">Undecided</label>
-                        <input type="radio" name="notasupporter" id="notasupporter" value="notasupporter">
+                        <input type="radio" name="voterstatus" id="notasupporter" value="notasupporter">
                         <label for="notasupporter">Not a Supporter</label>
-                        <input type="radio" name="not-home" id="not-home" value="not-home" >
+                        <input type="radio" name="voterstatus" id="not-home" value="not-home" >
                         <label for="not-home">Not Home</label>
-                        <input type="radio" name="deceased-moved" id="deceased-moved" value="deceased-moved">
+                        <input type="radio" name="voterstatus" id="deceased-moved" value="deceased-moved">
                         <label for="deceased-moved">Moved or Deceased</label>
-                        <input type="radio" name="not-party-member" id="not-party-member" value="not-party-member">
+                        <input type="radio" name="voterstatus" id="not-party-member" value="not-party-member">
                         <label for="not-party-member">Not a Member of our Party</label>
                             
                     </fieldset>
                     <br />
                     
-                        <button class="ui-btn ui-shadow" id="addperson">Submit</button>
-                        <div id="submission-feedback">Thank you. The new person has been saved.</div>
+                        <button class="ui-btn ui-shadow" id="addvoter">Submit</button>
+                        <div id="submission-feedback">Thank you. The new voter has been saved.</div>
                         <!-- create button that pulls up the same form again with address filled in -->
-                        <a id="add-new-entry"href="#">Add another person at this address</a>
+                        <a id="add-new-entry"href="#">Add another voter at this address</a>
+                        <a href="#add-to-address" class="ui-btn-active ui-state-persist" id="add-to-address">Add a New Voter to this Address</a>
                         
                     <!--<div id="result"></div>-->
                 </form>
@@ -210,7 +211,168 @@
              <div data-role="navbar">
                 <ul>
                     <li><a href="#map" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-home ui-btn-icon-notext">Map</a></li>
-                    <li><a href="#add-person" class="ui-btn-active ui-state-persist" id="add-person">Add Person</a></li>
+                    <li><a href="#add-voter" class="ui-btn-active ui-state-persist" id="add-voter">Add Voter</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- footer -->
+
+    </div><!-- page -->
+
+
+
+<!-- Add New Voter to Address page -->
+    <div data-role="page" id="add-to-address" data-title="Add New Voter to Address" data-theme="c">
+
+        <div data-role="header">
+            <a href="#" data-rel="back" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-arrow-l ui-btn-icon-notext">back</a> 
+            <h1>Add New Voter to Address</h1>
+        </div><!-- header -->
+
+        <div data-role="content">
+            <article>
+                
+                <div id="existing-address">
+                    <!-- add the existing address here -->
+                </div>
+                
+                <form name="toAddressForm" id="toAddressForm">
+                    <fieldset data-role="controlgroup">
+                        <legend><span id="name">Name</span></legend>
+
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="First Name" required >
+
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Last Name" required >
+                    </fieldset> 
+                    
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" >
+
+                    <label for="phone">Phone</label>
+                    <input type="phone" id="phone" name="phone" >
+
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <legend>Gender</legend>
+
+                        <input type="radio" name="gender" id="female" value="female" />
+                        <label for="female">Female</label>
+
+                        <input type="radio" name="gender" id="male" value="male"  />
+                        <label for="male">Male</label>
+
+                        <input type="radio" name="gender" id="other" value="other"  />
+                        <label for="other">Other</label>
+                    </fieldset>
+
+                    <label for="age">Age</label>
+                    <input type="age" id="age" name="age" />
+                    
+                    
+                    <fieldset data-role="controlgroup">
+                        <legend><span id="voterstatus">Status</span></legend>
+                            
+                        <input type="radio" name="voterstatus" id="supporter" value="supporter">
+                        <label for="supporter">Strong Supporter</label>
+                        <input type="radio" name="voterstatus" id="leaning" value="leaning">
+                        <label for="leaning">Leaning</label>
+                        <input type="radio" name="voterstatus" id="undecided" value="undecided">
+                        <label for="undecided">Undecided</label>
+                        <input type="radio" name="voterstatus" id="notasupporter" value="notasupporter">
+                        <label for="notasupporter">Not a Supporter</label>
+                        <input type="radio" name="voterstatus" id="not-home" value="not-home" >
+                        <label for="not-home">Not Home</label>
+                        <input type="radio" name="voterstatus" id="deceased-moved" value="deceased-moved">
+                        <label for="deceased-moved">Moved or Deceased</label>
+                        <input type="radio" name="voterstatus" id="not-party-member" value="not-party-member">
+                        <label for="not-party-member">Not a Member of our Party</label>
+                            
+                    </fieldset>
+                    <br />
+                    
+                        <button class="ui-btn ui-shadow" id="add-voter-to-address">Submit</button>
+                        <div id="submission-feedback">Thank you. The new voter has been saved.</div>
+                        <!-- create button that pulls up the same form again with address filled in -->
+                        <a id="add-new-entry"href="#">Add another voter at this address</a>
+                        
+                    <!--<div id="result"></div>-->
+                </form>
+            </article>
+        </div><!-- content -->
+
+        <div data-role="footer" data-position="fixed">
+             <div data-role="navbar">
+                <ul>
+                    <li><a href="#map" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-home ui-btn-icon-notext">Map</a></li>
+                    <li><a href="#add-voter" class="ui-btn-active ui-state-persist" id="add-voter">Add New Voter</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- footer -->
+
+    </div><!-- page -->
+
+
+<!-- Edit Existing Voter page -->
+    <div data-role="page" id="edit-voter" data-title="Edit Voter" data-theme="c">
+
+        <div data-role="header">
+            <a href="#" data-rel="back" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-arrow-l ui-btn-icon-notext">back</a> 
+            <h1>Edit Voter</h1>
+        </div><!-- header -->
+
+        <div data-role="content">
+            <article>
+                <div id="existing-data">
+                    <!-- add the existing static data here: Name, address, gender, age -->
+                </div>
+                
+                <form name="editVoterForm" id="editVoterForm">
+
+                    <!-- pull existing data into form --> 
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" >
+
+                    <label for="phone">Phone</label>
+                    <input type="phone" id="phone" name="phone" >
+                    
+                    
+                    <fieldset data-role="controlgroup">
+                        <legend><span id="voterstatus">Status</span></legend>
+                            
+                        <input type="radio" name="voterstatus" id="supporter" value="supporter">
+                        <label for="supporter">Strong Supporter</label>
+                        <input type="radio" name="voterstatus" id="leaning" value="leaning">
+                        <label for="leaning">Leaning</label>
+                        <input type="radio" name="voterstatus" id="undecided" value="undecided">
+                        <label for="undecided">Undecided</label>
+                        <input type="radio" name="voterstatus" id="notasupporter" value="notasupporter">
+                        <label for="notasupporter">Not a Supporter</label>
+                        <input type="radio" name="voterstatus" id="not-home" value="not-home" >
+                        <label for="not-home">Not Home</label>
+                        <input type="radio" name="voterstatus" id="deceased-moved" value="deceased-moved">
+                        <label for="deceased-moved">Moved or Deceased</label>
+                        <input type="radio" name="voterstatus" id="not-party-member" value="not-party-member">
+                        <label for="not-party-member">Not a Member of our Party</label>
+                            
+                    </fieldset>
+                    <br />
+                    
+                        <button class="ui-btn ui-shadow" id="editvoter">Submit</button>
+                        <div id="submission-feedback">Thank you. The voter information has been update.</div>
+                        <!-- create button that pulls up the same form again with address filled in -->
+                        <a id="add-new-entry"href="#">Add another voter at this address</a>
+                        
+                    <!--<div id="result"></div>-->
+                </form>
+            </article>
+        </div><!-- content -->
+
+        <div data-role="footer" data-position="fixed">
+             <div data-role="navbar">
+                <ul>
+                    <li><a href="#map" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-b ui-icon-home ui-btn-icon-notext">Map</a></li>
+                    <li><a href="#add-voter" class="ui-btn-active ui-state-persist" id="add-voter">Add New Voter</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
