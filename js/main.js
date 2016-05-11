@@ -7,7 +7,6 @@ function init(){
     document.addEventListener("deviceready", setbuttons, false);
     document.addEventListener("deviceready", initPushwoosh, true);
     document.addEventListener("deviceready", showResultsButtons, false);
-    document.addEventListener("deviceready", hideKeyboard, false);
 }
 
 
